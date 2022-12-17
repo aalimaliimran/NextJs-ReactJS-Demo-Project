@@ -1,12 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link';
 import Head from 'next/head';
 import { Checkbox, FormControlLabel, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useForm } from 'react-hook-form';
-import BasicModal from '../../components/UI/Modal';
+import { getTermsConditionsData } from '../../api/tempApi';
+import ScrollDialog from '../../../components/UI/DialogBox/ScrollDialog';
 
 const signup = () => {
+  const [termsConditionsData, setTermsConditionsData] = useState(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setTermsConditionsData(await getTermsConditionsData())
+    } 
+    fetchData()
+  }, []) 
+
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => {
@@ -177,13 +187,15 @@ const signup = () => {
                     </div>
                     <div className="form_row">
                     <FormControlLabel 
-                    control={<Checkbox {...register("termsCondtions")}/>} 
-                    label={<Typography>I agree the <Link href="signup">Terms and Conditions</Link></Typography>} />
+                    control={<Checkbox {...register("termsConditions")}/>} 
+                    label={<Typography>I agree the <span>Terms and Conditions</span></Typography>} />
                     </div>
                   </form>
                 </div>
                 <div className="card-footer">
-                  <button type="submit" className="btn" form="signupForm" disabled={!isDirty || !isValid}>Sign Up</button>
+                  <button type="submit" className="btn" form="signupForm" 
+                    disabled={!isDirty || !isValid || !hasCheckedTermsConditions}>Sign Up
+                  </button>
                   <p>Already have an account?&nbsp;
                      <Link href="signin">Sign In</Link>
                   </p>
@@ -195,7 +207,13 @@ const signup = () => {
   
     </section>
   </main>
-  {hasCheckedTermsConditions && <BasicModal title={isError.title} message={isError.message} onConfirm={errorHandler}/>}
+  {hasCheckedTermsConditions && 
+  <ScrollDialog 
+    title={termsConditionsData.title} 
+    description={termsConditionsData.description}
+    scrollType={'paper'}
+    openState={true}
+  />}
   
   </>
   )

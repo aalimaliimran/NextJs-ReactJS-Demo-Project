@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getUserData } from "./api";
+import { getRememberMeData } from "../../api/tempApi";
 import { SigninForm } from "./SigninForm";
 
 export default function Signin() {
@@ -7,7 +7,7 @@ export default function Signin() {
 
   useEffect(() => {
     const fetchData = async () => {
-      setData(await getUserData())
+      setData(await getRememberMeData())
     } 
     fetchData()
   }, []) 
