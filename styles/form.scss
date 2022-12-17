@@ -1,0 +1,53 @@
+main.auth{
+    .MuiFormControl-root{
+        .MuiFormLabel-root{
+            color:#7b809a;
+            &.Mui-error{
+                color:$red;
+            }
+        }
+        .MuiInputBase-root{
+            &:before, &:after{
+                border-bottom: 1px solid #d2d6da;
+            }
+            &:hover:before{
+                border-bottom: 1px solid #d2d6da;
+            }
+            &.Mui-error{
+                &:before, &:after{
+                    border-bottom: 1px solid $red;
+                }
+                &:hover:before{
+                    border-bottom: 1px solid $red;
+                }
+            }
+        }
+    }
+    .MuiFormControlLabel-root{
+        .MuiTypography-root{
+            a{
+                color:$pink;
+            }
+        }
+    }
+    .form_row{
+        margin-block-end:15px;
+        &.flex_row{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+    .MuiFormHelperText-root{
+        color:$red;
+    }
+    .MuiButtonBase-root{
+        color:$pink;
+    }
+    .forgot_link{
+        color:$pink;
+    }
+}
+
+
+
