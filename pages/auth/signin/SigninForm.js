@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import {
@@ -15,10 +15,17 @@ import {
   Facebook,
   Google,
   LinkedIn,
+  GitHub,
+  Twitter,
 } from '@mui/icons-material';
 import { useForm } from 'react-hook-form';
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
-export function SigninForm({preloadedValues}) {
+
+export default function SigninForm({preloadedValues}) {
+
+  /* React Hook Form */
   const {
     register,
     handleSubmit,
@@ -27,6 +34,11 @@ export function SigninForm({preloadedValues}) {
     mode: `all`,
     defaultValues: preloadedValues,
   });
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   const onSubmit = (data) => {
     if (data.remember) {
@@ -38,18 +50,46 @@ export function SigninForm({preloadedValues}) {
       localStorage.setItem(`Remember`, JSON.stringify(rememberObj));
     }
   };
+   /* React Hook Form */
 
-  const [showPassword, setShowPassword] = useState(false);
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+                      
+                      
+   /* Social Logins */
+  const providers = [
+    {
+      name: 'facebook',
+      Icon: Facebook,
+    },
+    {
+      name: 'linkedin',
+      Icon: LinkedIn,
+    },
+    {
+      name: 'github',
+      Icon: GitHub,
+    },
+    {
+      name: 'twitter',
+      Icon: Twitter,
+    },
+    {
+      name: 'google',
+      Icon: Google,
+    },
+  ]
+
+  const handleOAuthSignIn = (provider) => () => signIn(provider, { callbackUrl : process.env.BASE_URL})
+    
+	
+  /* Social Logins */
+
   return (
     <>
       <Head>
         <title>Signin | Young Warriors</title>
         <meta name="description" content="A project of Young Warriors" />
       </Head>
+      
       <main className="auth">
         <section>
           <div className="container">
@@ -140,7 +180,7 @@ export function SigninForm({preloadedValues}) {
                           control={<Checkbox {...register(`remember`)} />}
                           label="Remember me"
                         />
-                        <Link href="forgot-password" className="forgot_link">
+                        <Link href="forgot-password" className="forgot_link" shallow>
                           Forgot Password?
                         </Link>
                       </div>
@@ -151,18 +191,23 @@ export function SigninForm({preloadedValues}) {
                       type="submit"
                       form="signinForm"
                       className="btn"
+                    
                     >
                       Sign In
                     </button>
 
                     <p>
-                      Don't have an account?&nbsp;
+                      
+                      Dont have an account?&nbsp;
                       <Link href="signup">Sign Up</Link>
+                      
                     </p>
                     <div className="social_logins">
-                      <Facebook />
-                      <Google />
-                      <LinkedIn />
+                    {providers.map(({ name, Icon }) => (
+                      <Icon 
+                        key={name} 
+                        onClick={handleOAuthSignIn(name)}
+                        />))}
                     </div>
                   </div>
                 </div>

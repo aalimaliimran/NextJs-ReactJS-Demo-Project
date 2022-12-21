@@ -1,6 +1,17 @@
 import React from 'react'
 import Link from 'next/link';
+import { useRouter } from 'next/router'
+import { useSession, signIn, signOut } from 'next-auth/react'
 const Header = () => {
+	const { data: session } = useSession()
+	const { push } = useRouter()
+
+	const handleSignOut = async () => {
+		const data = await signOut({ redirect: false, callbackUrl: '/' })
+		push(data.url)
+	}
+
+	
   return (<header class="header-area header-sticky">
         <div class="container">
             <div class="row">
@@ -15,11 +26,22 @@ const Header = () => {
                                 <a href="javascript:;">Drop Down</a>
                                 <ul>
                                   
-                                    <li><a href="">FAQ's</a></li>
+                                    <li><a href="">FAQs</a></li>
                                     <li><a href="">Blog</a></li>
                                 </ul>
                             </li>
                             <li><a href="#contact-us">Contact Us</a></li>
+                            {session ? (
+                                    <>
+                                        <span>Signed in as {session.user.name}</span>
+                                        {<button onClick={handleSignOut}>Sign out</button>}
+                                    </>
+                                ) : (
+                                    <>
+                                        <span>You are not signed in</span>
+                                        <Link href={'/auth/signin'}>Sign in</Link>
+                                    </>
+                                )}
                             <li><Link href="auth/signin">Sign In</Link></li>
                         </ul>
                         <a class='menu-trigger'>

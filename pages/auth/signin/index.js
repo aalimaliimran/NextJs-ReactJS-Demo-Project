@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import Loader from '../../../components/UI/Loader';
 import { getRememberMeData } from "../../api/tempApi";
-import { SigninForm } from "./SigninForm";
+import SigninForm  from "./SigninForm";
 
 export default function Signin() {
   const [data, setData] = useState(null)
@@ -12,5 +13,5 @@ export default function Signin() {
     fetchData()
   }, []) 
 
-  return data ? <SigninForm preloadedValues={data}/> : <div>Loading...</div>
+  return data ? <SigninForm preloadedValues={data}/> : <Loader/>
 }

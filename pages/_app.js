@@ -1,8 +1,8 @@
 import '../styles/globals.scss'
-import '../styles/footer.scss'
 import Head from 'next/head'
+import { SessionProvider } from 'next-auth/react'
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <>
        <Head>
@@ -10,7 +10,9 @@ function MyApp({ Component, pageProps }) {
         <meta name="description" content="A project of Young Warriors" />
         <link rel="icon" href="/favicon.png" />
       </Head>
+      <SessionProvider session={session}>
       <Component {...pageProps} />
+      </SessionProvider>
     </>
   )
 }

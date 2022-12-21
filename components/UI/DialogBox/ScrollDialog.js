@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -29,8 +28,8 @@ export default function ScrollDialog(props) {
     }
   }, [open]);
 
+  /* Scroll height calc and conditional disable/enable Agree button */
   const [bottom, setBottom] = React.useState(false);
-
   const handleScroll = (e) => {
       const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
       setBottom(bottom)
