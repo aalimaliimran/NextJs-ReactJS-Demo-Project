@@ -1,0 +1,26 @@
+.dashboard_header{
+    margin-inline-start: 320px;
+    height: 80px;
+    background-color: #00dcff;
+    position: sticky;
+    top: 0;
+    padding: 20px;
+
+    .flex_col{
+        display: flex;
+        align-items: center;
+    }
+    .right_col{
+        justify-content: flex-end;
+    }
+
+    h1{
+        text-transform: capitalize;
+        color: #fff;
+        margin: 0;
+    }
+}
+.d_layout{
+    margin-inline-start: 320px;
+    padding: 20px;
+}
