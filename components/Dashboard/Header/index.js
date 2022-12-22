@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import NotificationBell from '../../components/UI/NotificationBell/NotificationBell'
+import NotificationBell from '../../../components/Common/UI/NotificationBell/NotificationBell'
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
@@ -7,13 +7,14 @@ import HelpIcon from '@mui/icons-material/Help';
 import { headerStyles } from './styles';
 import {useRouter} from 'next/router';
 
-const DashboardHeader = () => {
+const Header = () => {
 
     const [title, setTitle] = useState(null);
     const router = useRouter();
     
     useEffect(() => {
-      const parsedTitle =  router.pathname.replace(/\W/g, ' ');
+       const routerPathLastIndex = router.pathname.split("/").pop();
+      const parsedTitle =  routerPathLastIndex.replace(/\W/g, ' ');
       setTitle(parsedTitle);
     }, [router]);
 
@@ -37,4 +38,4 @@ const DashboardHeader = () => {
     )
 }
 
-export default DashboardHeader
+export default Header

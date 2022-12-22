@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import BasicCard from '../../../components/UI/BasicCard/BasicCard';
+import BasicCard from '../../../components/Common/UI/BasicCard/BasicCard';
 import RefreshIcon from '@mui/icons-material/Refresh';
-import SearchBar from '../../../components/UI/SearchBar/SearchBar';
+import SearchBar from '../../../components/Common/UI/SearchBar/SearchBar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import NewUserModal from '../../../components/UI/Modals/NewUserModal';
+import NewUserModal from '../../../components/Common/UI/Modals/NewUserModal';
 import { cardHeaderStyles } from './styles';
-import Navbar from '../../../components/UI/Navbar/Navbar';
-import DashboardHeader from '../../../components/DashboardHeader';
+import Navbar from '../../../components/Common/UI/Navbar/Navbar';
+import Header from '../../../components/Dashboard/Header';
 
 const Authentication = () => {
     const [open, setOpen] = useState(false);
@@ -83,7 +83,7 @@ const Authentication = () => {
     return (
             <>
               <Navbar />
-    <DashboardHeader />
+    <Header />
     <main className='d_layout dashboard'>
             <BasicCard
                 header={getHeader()}

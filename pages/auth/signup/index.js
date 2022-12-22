@@ -3,12 +3,12 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { Checkbox, FormControlLabel, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { Controller, useForm } from 'react-hook-form';
+import {useForm } from 'react-hook-form';
 import { getTermsConditionsData } from '../../api/tempApi';
-import ScrollDialog from '../../../components/UI/DialogBox/ScrollDialog';
+import ScrollDialog from '../../../components/Common/UI/DialogBox/ScrollDialog';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import BasicSnackbar from '../../../components/UI/Snackbar/BasicSnackbar';
+import BasicSnackbar from '../../../components/Common/UI/Snackbar/BasicSnackbar';
 
 
 const Signup = () => {
@@ -79,6 +79,7 @@ const handleClose = (event, reason) => {
     <title>Signup | Young Warriors</title>
     <meta name="description" content="A project of Young Warriors" />
   </Head>
+  {open.message?.length > 0 &&
   <BasicSnackbar
       vertical= 'top'
       horizontal= 'right'
@@ -86,7 +87,7 @@ const handleClose = (event, reason) => {
       severity="error"
       message={open.message}
       onClose={handleClose}
-    />
+    />}
     <main className="auth">
     <section>
         <div className="container">
