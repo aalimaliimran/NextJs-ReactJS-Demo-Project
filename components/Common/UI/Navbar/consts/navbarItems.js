@@ -9,14 +9,14 @@ export const mainNavbarItems = [
     {
         id: 0,
         icon: <PeopleIcon />,
-        label: 'Users',
-        route: '/dashboard/users',
+        label: 'Books',
+        route: '/dashboard/books',
     },
     {
         id: 1,
         icon: <DnsIcon />,
-        label: 'Database',
-        route: 'database',
+        label: 'Users',
+        route: '/dashboard/users',
     },
     {
         id: 2,
