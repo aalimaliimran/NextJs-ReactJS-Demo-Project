@@ -9,7 +9,7 @@ const columns = [
 ];
 
 const userTableStyles = {
-    height: '650px',
+    height: '371px',
 };
 
 const UserTable = ({ onError }) => {

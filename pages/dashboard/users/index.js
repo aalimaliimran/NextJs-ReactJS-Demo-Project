@@ -3,6 +3,8 @@ import GridWrapper from '../../../components/Common/UI/GridWrapper/GridWrapper'
 import BasicSnackbar from '../../../components/Common/UI/Snackbar/BasicSnackbar';
 import UserTable from '../../../components/Dashboard/Users/UserTable/UserTable';
 import BasicCard from '../../../components/Common/UI/BasicCard/BasicCard';
+import Navbar from '../../../components/Common/UI/Navbar/Navbar';
+import Header from '../../../components/Dashboard/Header';
 
 const Users = () => {
   const [open, setOpen] = useState(false);
@@ -15,7 +17,11 @@ const Users = () => {
   };
 
     return (
-      <GridWrapper>
+        <>
+        <Navbar/>
+        <Header/>
+        <main className='d_layout'>
+   
         <BasicCard 
           content={<UserTable onError={() => setOpen(true)} />}
         />
@@ -27,7 +33,9 @@ const Users = () => {
           message="Data couldn't be fetched"
           onClose={handleClose}
         />
-      </GridWrapper>
+  
+      </main>
+      </>
     )
 }
 
