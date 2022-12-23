@@ -11,6 +11,8 @@ import Toolbar from '@mui/material/Toolbar';
 import { styled } from '@mui/material/styles';
 import MuiAppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
+import { useDispatch, useSelector } from 'react-redux';
+import { uiActions } from '../../../shared/store/ui-slice';
 
 const Header = () => {
 
@@ -23,10 +25,24 @@ const Header = () => {
       setTitle(parsedTitle);
     }, [router]);
 
-    const [open, setOpen] = React.useState(false);
+
+    const showCart = useSelector((state) => state.ui.cartIsVisible);
+    const [open, setOpen] = React.useState(showCart);
+
+    useEffect(() => {
+        setOpen(showCart);
+      }, [showCart])
+
+
+    const dispatch = useDispatch();
     const handleDrawerOpen = () => {
         setOpen(true);
+        dispatch(uiActions.toggle());
       };
+
+
+
+
       const drawerWidth = 240;
       const AppBar = styled(MuiAppBar, {
         shouldForwardProp: (prop) => prop !== 'open',

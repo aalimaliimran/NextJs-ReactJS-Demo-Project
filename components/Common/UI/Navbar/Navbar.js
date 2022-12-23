@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { mainNavbarItems } from './consts/navbarItems';
 import { navbarStyles } from './styles';
@@ -18,6 +18,8 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import List from '@mui/material/List';
 import {useTheme } from '@mui/material/styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { uiActions } from '../../../../shared/store/ui-slice';
 
 const Navbar = () => {
 
@@ -70,15 +72,22 @@ const Navbar = () => {
       }),
     }),
   );
-
+  const showCart = useSelector((state) => state.ui.cartIsVisible);
 
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(showCart);
+
+    useEffect(() => {
+      setOpen(showCart);
+    }, [showCart])
+    
+    const dispatch = useDispatch();
   const handleDrawerClose = () => {
     setOpen(false);
+    dispatch(uiActions.toggle());
   };
 
-
+  
   const router = useRouter();
 
     return (

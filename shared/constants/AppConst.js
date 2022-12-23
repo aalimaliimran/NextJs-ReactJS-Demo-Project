@@ -4,7 +4,7 @@ export const authRole = {
   admin: ['admin'],
   subAdmin: ['subAdmin'],
   naylamDispatcher: ['companyDispatcher'],
-  companyDispatcher: ['naylamDispatcher'],
+  companyDispatcher: ['Dispatcher'],
   user: ['user'],
 };
 
@@ -12,6 +12,6 @@ export const RoutePermittedRole = {
   admin: 'admin',
   subAdmin: 'subAdmin',
   companyDispatcher: 'companyDispatcher',
-  naylamDispatcher: 'naylamDispatcher',
+  naylamDispatcher: 'Dispatcher',
   user: 'user',
 };
