@@ -14,12 +14,10 @@ const Dashboard = () => {
 
   return (
     <>  
-       <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
+    <main className='wrapper'>
       <Header/>
       <Navbar/>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-    
+      <main className='content'>
         <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
@@ -47,14 +45,9 @@ const Dashboard = () => {
           eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
           posuere sollicitudin aliquam ultrices sagittis orci a.
         </Typography>
-      </Box>
-    </Box>
-   {/*  <Navbar />
-    <Header />
-    <main className='d_layout dashboard'>
-    <div>This is Dashboard</div>
-    </main> */}
     
+      </main>
+    </main>
     </>
    
   )

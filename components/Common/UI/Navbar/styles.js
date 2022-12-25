@@ -1,9 +1,11 @@
 export const navbarStyles = {
     drawer: {
-        width: 320,
+        svg: {
+            color: 'rgba(255, 255, 255, 0.7)'
+        },
         flexShrink: 0,
         '& .MuiDrawer-paper': {
-            width: 320,
+            
             boxSizing: 'border-box',
             backgroundColor: '#101F33',
             color: 'rgba(255, 255, 255, 0.7)',
@@ -11,6 +13,11 @@ export const navbarStyles = {
         '& .Mui-selected': {
             color: 'red',
         },
+        '& .MuiListItem-root': {
+            paddingInlineStart: 0,
+            paddingInlineEnd: 0,
+        },
+        
     },
     icons: {
         color: 'rgba(255, 255, 255, 0.7)!important',

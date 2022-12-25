@@ -1,11 +1,17 @@
 .dashboard_header{
-    margin-inline-start: 320px;
-    height: 80px;
+    min-height: 64px;
     background-color: #00dcff;
-    position: sticky;
+    position: fixed;
     top: 0;
-    padding: 20px;
-    z-index: 9999;
+    z-index: 999;
+    width: calc(100% - 64px);
+    margin-inline-start: 64px;
+
+    &[open]{
+        margin-inline-start: 240px;
+        width: calc(100% - 240px);
+    }
+   
 
     .flex_col{
         display: flex;
@@ -20,8 +26,13 @@
         color: #fff;
         margin: 0;
     }
+    svg{
+        color: #fff;
+    }
 }
-.d_layout{
-    margin-inline-start: 320px;
-    padding: 20px;
+main.wrapper{
+    display: flex;
+}
+main.content{
+    padding: 90px 20px;
 }

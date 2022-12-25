@@ -16,6 +16,7 @@ import { uiActions } from '../../../shared/store/ui-slice';
 
 const Header = () => {
 
+    /* Set Title Router Query String URL Path */
     const [title, setTitle] = useState(null);
     const router = useRouter();
     
@@ -24,25 +25,26 @@ const Header = () => {
       const parsedTitle =  routerPathLastIndex.replace(/\W/g, ' ');
       setTitle(parsedTitle);
     }, [router]);
+    /* Set Title Router Query String URL Path */
 
-
-    const showCart = useSelector((state) => state.ui.cartIsVisible);
-    const [open, setOpen] = React.useState(showCart);
+    /* Menu Toggle */
+    const menuIsVisible = useSelector((state) => state.ui.menuIsVisible);
+    const [open, setOpen] = React.useState(menuIsVisible);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        setOpen(showCart);
-      }, [showCart])
+        setOpen(menuIsVisible);
+      }, [menuIsVisible])
 
-
-    const dispatch = useDispatch();
     const handleDrawerOpen = () => {
         setOpen(true);
         dispatch(uiActions.toggle());
       };
+    /* Menu Toggle */
 
 
 
-
+      /* Menu Persistent Drawer */
       const drawerWidth = 240;
       const AppBar = styled(MuiAppBar, {
         shouldForwardProp: (prop) => prop !== 'open',
@@ -61,12 +63,14 @@ const Header = () => {
           }),
         }),
       }));
+      /* Menu Persistent Drawer */
 
     return (
-     <header className='dashboard_header'>
+     <header className='dashboard_header' open={open}>
         <div className='row'>
             <div className='col-xl-4 flex_col left_left'>
-            <AppBar position="fixed" open={open}>
+            {/* Hamburger */}
+            
                 <Toolbar>
                 <IconButton
                     color="inherit"
@@ -80,12 +84,10 @@ const Header = () => {
                 >
                     <MenuIcon />
                 </IconButton>
-                <Typography variant="h6" noWrap component="div">
-                    Mini variant drawer
-                </Typography>
+                    <h1>{title}</h1>
                 </Toolbar>
-            </AppBar>
-                <h1>{title}</h1>
+           
+             {/* Hamburger */}
             </div>
             <div className='col-xl-8 flex_col right_col'>
             <NotificationBell/>

@@ -20,9 +20,12 @@ import List from '@mui/material/List';
 import {useTheme } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { uiActions } from '../../../../shared/store/ui-slice';
+import Image from 'next/image';
+import {Link as MUILink, Typography } from '@mui/material';
 
 const Navbar = () => {
 
+/* Menu Persistent Drawer */
   const drawerWidth = 240;
   const openedMixin = (theme) => ({
   
@@ -72,98 +75,53 @@ const Navbar = () => {
       }),
     }),
   );
-  const showCart = useSelector((state) => state.ui.cartIsVisible);
-
   const theme = useTheme();
-  const [open, setOpen] = React.useState(showCart);
+  /* Menu Persistent Drawer */
+
+
+/* Menu Toggle */
+  const menuIsVisible = useSelector((state) => state.ui.menuIsVisible);
+  const [open, setOpen] = React.useState(menuIsVisible);
 
     useEffect(() => {
-      setOpen(showCart);
-    }, [showCart])
+      setOpen(menuIsVisible);
+    }, [menuIsVisible])
     
     const dispatch = useDispatch();
-  const handleDrawerClose = () => {
-    setOpen(false);
+    const handleDrawerClose = () => {
+      setOpen(false);
     dispatch(uiActions.toggle());
   };
+  /* Menu Toggle */
 
   
   const router = useRouter();
 
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+console.log(selectedIndex)
+  const handleListItemClick = (event, index) => {
+    setSelectedIndex(index);
+  };
+
     return (
 
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
+      <Drawer variant="permanent" anchor="left" className='menu_drawer_root' open={open} sx={navbarStyles.drawer}>
+        <DrawerHeader className='drawer_header' onClick={handleDrawerClose}>
+          <div className='wrap'>
+            <Image src="/images/hand_logo.png" width={45} height={45} alt="logo" />
+            <Typography variant="h6">React Factory</Typography>
+          </div>
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-
-
-    /*     <Drawer
-          sx={navbarStyles.drawer}
-          variant="permanent"
-          anchor="left"
-      >
-        <Toolbar />
-        <Divider />
-        <List>
-          {mainNavbarItems.map((item, index) => (
-            <ListItem
-                key={item.id}
-                onClick={() => router.push(item.route)}
-            >
+        {mainNavbarItems.map((item, index) => (
+            <ListItemButton
+                key={index}
+                component={MUILink} 
+                to={item.route}
+                selected={selectedIndex === index}
+                onClick={(event) => handleListItemClick(event, index)}>
+              
               <ListItemIcon
                 sx={navbarStyles.icons}
               >
@@ -173,10 +131,11 @@ const Navbar = () => {
                 sx={navbarStyles.text}
                 primary={item.label}
               />
-            </ListItem>
+              
+            </ListItemButton>
           ))}
         </List>
-      </Drawer> */
+      </Drawer>
     );
 };
 

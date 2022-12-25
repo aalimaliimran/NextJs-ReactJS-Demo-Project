@@ -1,0 +1,21 @@
+.menu_drawer_root{
+    .drawer_header{
+        justify-content: flex-start;
+        .wrap{
+            min-width: 56px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            cursor: pointer;
+    
+            img{
+                min-width: 45px;
+            }
+            
+        }
+       
+    }
+    .MuiListItemIcon-root{
+        margin-left: 5px;
+    }
+}
