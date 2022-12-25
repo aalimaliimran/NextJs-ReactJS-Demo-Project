@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { mainNavbarItems } from './consts/navbarItems';
 import { navbarStyles } from './styles';
@@ -21,7 +21,8 @@ import {useTheme } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { uiActions } from '../../../../shared/store/ui-slice';
 import Image from 'next/image';
-import {Link as MUILink, Typography } from '@mui/material';
+import {Typography } from '@mui/material';
+import Link from 'next/link';
 
 const Navbar = () => {
 
@@ -97,10 +98,12 @@ const Navbar = () => {
   
   const router = useRouter();
 
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
-console.log(selectedIndex)
-  const handleListItemClick = (event, index) => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  console.log(selectedIndex)
+  const handleListItemClick = (event, index, item) => {
     setSelectedIndex(index);
+    router.replace(item.route)
+ 
   };
 
     return (
@@ -117,10 +120,11 @@ console.log(selectedIndex)
         {mainNavbarItems.map((item, index) => (
             <ListItemButton
                 key={index}
-                component={MUILink} 
+                component={Link} 
                 to={item.route}
-                selected={selectedIndex === index}
-                onClick={(event) => handleListItemClick(event, index)}>
+                selected={selectedIndex}
+                tabIndex={index}
+                onClick={(event) => handleListItemClick(event, index, item)}>
               
               <ListItemIcon
                 sx={navbarStyles.icons}
