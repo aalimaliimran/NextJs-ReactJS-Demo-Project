@@ -100,9 +100,9 @@ const Navbar = () => {
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   console.log(selectedIndex)
-  const handleListItemClick = (event, index, item) => {
+  const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
-    router.replace(item.route)
+   
  
   };
 
@@ -122,9 +122,9 @@ const Navbar = () => {
                 key={index}
                 component={Link} 
                 to={item.route}
-                selected={selectedIndex}
+                selected={selectedIndex === index}
                 tabIndex={index}
-                onClick={(event) => handleListItemClick(event, index, item)}>
+                onClick={(event) => handleListItemClick(event, index)}>
               
               <ListItemIcon
                 sx={navbarStyles.icons}
