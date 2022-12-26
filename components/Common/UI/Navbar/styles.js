@@ -11,12 +11,29 @@ export const navbarStyles = {
             color: 'rgba(255, 255, 255, 0.7)',
         },
         '& .Mui-selected': {
-            color: 'red',
+            color: '#FE9D0F',
+            svg: {
+                color: '#FE9D0F'
+            },
         },
         '& .MuiListItem-root': {
             paddingInlineStart: 0,
             paddingInlineEnd: 0,
         },
+        '& .active': {
+            color: '#00dcff',
+            svg: {
+                color: '#00dcff'
+            },
+        },
+        '.MuiCollapse-entered':{
+            '.MuiButtonBase-root':{
+                paddingInlineStart: '60px',
+                '.MuiListItemIcon-root':{
+                    minWidth:'35px'
+                }
+            }
+        }
         
     },
     icons: {

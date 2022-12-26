@@ -5,7 +5,7 @@ import SettingsEthernetIcon from '@mui/icons-material/SettingsEthernet';
 import SettingsInputComponentIcon from '@mui/icons-material/SettingsInputComponent';
 import DnsIcon from '@mui/icons-material/Dns';
 
-export const mainNavbarItems = [
+export const mainNavbarList = [
     {
         id: 0,
         icon: <PublicIcon />,
@@ -16,13 +16,53 @@ export const mainNavbarItems = [
         id: 1,
         icon: <DnsIcon />,
         label: 'Books',
-        route: '/dashboard/books',
+        route: '',
+        items: [
+            {
+                id: 1,
+                icon: <DnsIcon />,
+                label: "Books List",
+                route: '/dashboard/books/books-list',
+            },
+            {
+                id: 2,
+                icon: <DnsIcon />,
+                label: "View Books",
+                route: '/dashboard/books/view-book',
+            },
+            {
+                id: 3,
+                icon: <DnsIcon />,
+                label: "Add Books",
+                route: '/dashboard/books/add-book',
+            }
+        ]
     },
     {
         id: 2,
         icon: <PeopleIcon />,
         label: 'Users',
-        route: '/dashboard/users',
+        route: '',
+        items: [
+            {
+                id: 1,
+                icon: <DnsIcon />,
+                label: "Users List",
+                route: '/dashboard/users/users-list',
+            },
+            {
+                id: 2,
+                icon: <DnsIcon />,
+                label: "View User",
+                route: '/dashboard/users/view-user',
+            },
+            {
+                id: 3,
+                icon: <DnsIcon />,
+                label: "Add User",
+                route: '/dashboard/users/add-user',
+            }
+        ]
     },
     {
         id: 3,
@@ -32,14 +72,14 @@ export const mainNavbarItems = [
     },
     {
         id: 4,
-        icon: <SettingsEthernetIcon />,
+        icon: <SettingsInputComponentIcon />,
         label: 'Functions',
         route: 'functions',
     },
     {
         id: 5,
-        icon: <SettingsInputComponentIcon />,
-        label: 'Machine learning',
-        route: 'machine-learning',
+        icon: <SettingsEthernetIcon />,
+        label: 'Logout',
+        route: '/',
     },
 ]
