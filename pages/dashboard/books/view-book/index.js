@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../../../../components/Common/UI/Navbar/Navbar'
+import Navbar from '../../../../components/Common/UI/Navbar'
 import Header from '../../../../components/Dashboard/Header'
 
 const ViewBook = () => {

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import BasicSnackbar from '../../../../components/Common/UI/Snackbar/BasicSnackbar';
 import UserTable from '../../../../components/Dashboard/Users/UserTable/UserTable';
 import BasicCard from '../../../../components/Common/UI/BasicCard/BasicCard';
-import Navbar from '../../../../components/Common/UI/Navbar/Navbar';
+import Navbar from '../../../../components/Common/UI/Navbar';
 import Header from '../../../../components/Dashboard/Header';
 
 const UsersList = () => {
@@ -14,6 +14,9 @@ const UsersList = () => {
     }
     setOpen(false);
   };
+
+
+
 
     return (
         <>

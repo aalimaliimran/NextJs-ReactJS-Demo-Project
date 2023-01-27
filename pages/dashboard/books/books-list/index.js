@@ -6,9 +6,9 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import NewUserModal from "../../../../components/Common/UI/Modals/NewUserModal";
-import { cardHeaderStyles } from "./styles";
-import Navbar from "../../../../components/Common/UI/Navbar/Navbar";
+import Navbar from "../../../../components/Common/UI/Navbar";
 import Header from "../../../../components/Dashboard/Header";
+import { withRouter } from 'next/router'
 
 const BooksList = () => {
   const [open, setOpen] = useState(false);
@@ -37,6 +37,22 @@ const BooksList = () => {
       setOpen(true);
     };
 
+    const cardHeaderStyles = {
+      wrapper: {
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          paddingLeft: '20px',
+          paddingRight: '20px',
+          height: '65px',
+          backgroundColor: '#f5f5f5',
+          borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+      },
+      addUserButton: {
+          fontSize: '1.05rem',
+      },
+  }
+
     return (
       <Box sx={cardHeaderStyles.wrapper}>
         <SearchBar
@@ -64,8 +80,8 @@ const BooksList = () => {
   const getContent = () => (
     <>
       {users.length ? (
-        users.map((user) => (
-          <Box sx={{ marginBottom: "20px" }}>
+        users.map((user, index) => (
+          <Box key={index} sx={{ marginBottom: "20px" }}>
             <Typography>User ID: {user.userId}</Typography>
             <Typography>Email: {user.email}</Typography>
             <Typography>Phone Number: {user.phoneNumber}</Typography>
@@ -104,4 +120,4 @@ const BooksList = () => {
   );
 };
 
-export default BooksList;
+export default withRouter(BooksList);

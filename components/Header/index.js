@@ -12,17 +12,17 @@ const Header = () => {
 	}
 
 	
-  return (<header class="header-area header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
+  return (<header className="header-area header-sticky">
+        <div className="container">
+            <div className="row">
+                <div className="col-12">
+                    <nav className="main-nav">
                         <Link href="/" className='logo'>React Factory</Link>
-                        <ul class="nav">
-                            <li><a href="#welcome" class="active">Home</a></li>
+                        <ul className="nav">
+                            <li><a href="#welcome" className="active">Home</a></li>
                             <li><Link href="">About Us</Link></li>
                             <li><a href="#services">Services</a></li>
-                            <li class="submenu">
+                            <li className="submenu">
                                 <a href="javascript:;">Drop Down</a>
                                 <ul>
                                   
@@ -44,7 +44,7 @@ const Header = () => {
                                 )}
                             <li><Link href="auth/signin">Sign In</Link></li>
                         </ul>
-                        <a class='menu-trigger'>
+                        <a className='menu-trigger'>
                             <span>Menu</span>
                         </a>
                 

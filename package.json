@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3000",
+    "dev": "next dev -p 8080",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@metismenu/react": "^0.0.2",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.0",
     "@mui/x-data-grid": "^5.17.16",
@@ -27,6 +28,10 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.40.0",
     "react-redux": "^8.0.5",
-    "sass": "^1.56.1"
+    "react-router-dom": "^5.2.0",
+    "sass": "^1.56.1",
+    "react-perfect-scrollbar": "1.5.8",
+    "nprogress": "0.2.0",
+    "clsx": "1.2.1"
   }
 }

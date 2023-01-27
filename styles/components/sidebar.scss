@@ -1,0 +1,63 @@
+.MuiPaper-root{
+  background-color: #282A42;
+  color: rgba(234, 234, 255, 0.87);
+}
+.MuiListItemIcon-root svg{
+  color: rgba(234, 234, 255, 0.87);
+}
+.MuiDivider-root{
+  color:rgba(234, 234, 255, 0.38);
+  border-color: rgba(234, 234, 255, 0.12);
+}
+.MuiDivider-root::before{
+  border-top: thin solid rgba(234, 234, 255, 0.12);
+}
+.MuiListItemIcon-root{
+  min-width: 38px;
+}
+
+.nav-header{
+  display: flex;
+  align-items: center;
+  padding-right: 1rem;
+  justify-content: space-between;
+  transition: padding .25s ease-in-out;
+  min-height: 56px;
+}
+
+
+#nprogress {
+  pointer-events:none;
+}
+#nprogress .bar {
+    left: 0;
+    top: 0;
+    height: 3px;
+    width: 100%;
+    z-index: 2000;
+    position: fixed;
+    background-color: #666CFF;
+}
+.desktop_left_sidebar_close_icon{
+  width:22px;
+  fill:none;
+  height:22px;
+  transition: transform .25s ease-in-out .35s;
+}
+
+.desktop_left_sidebar_close_icon path:nth-child(1){
+  fill:rgba(234, 234, 255, 0.6);
+}
+.desktop_left_sidebar_close_icon > path:nth-child(2){
+  fill:rgba(234, 234, 255, 0.38);
+}
+.styled_link{
+  display: flex;
+  align-items: center;
+  text-decoration: none
+}
+.header_title{
+  font-weight: 700;
+  line-height: 1.2;
+  transition: opacity .25s ease-in-out, margin .25s ease-in-out;
+}

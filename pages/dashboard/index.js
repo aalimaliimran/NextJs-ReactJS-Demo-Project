@@ -1,24 +1,15 @@
 import React from 'react'
-import Navbar from '../../components/Common/UI/Navbar/Navbar'
 import Header from '../../components/Dashboard/Header'
-
-
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
-
-
-
 const Dashboard = () => {
-  
 
   return (
     <>  
     <main className='wrapper'>
       <Header/>
-      <Navbar/>
       <main className='content'>
         <Typography paragraph>
+          
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
           enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
